@@ -15,10 +15,5 @@ class Author extends Model
     {
         $this->attributes['dob'] = Carbon::parse($dob);
     }
-
-    public function path()
-    {
-        return '/authors/' . $this->id ;
-    }
 }
 
