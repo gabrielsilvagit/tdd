@@ -9,34 +9,31 @@ class AuthorsController extends Controller
 {
     public function store()
     {
-        // $author =
-        Author::create(request()->only([
-            'name', 'dob',
-        ]));
+        Author::create($this->validateRequest());
         // ($this->validateRequest());
 
         // return redirect($author->path());
     }
 
-    public function update(Author $author)
-    {
-        $author->update($this->validateRequest());
+    // public function update(Author $author)
+    // {
+    //     $author->update($this->validateRequest());
 
-        return redirect($author->path());
-    }
+    //     return redirect($author->path());
+    // }
 
-    public function destroy(Author $author)
-    {
-        $author->delete();
+    // public function destroy(Author $author)
+    // {
+    //     $author->delete();
 
-        return redirect('/authors');
-    }
+    //     return redirect('/authors');
+    // }
 
-    public function validateRequest()
+    protected function validateRequest()
     {
         return request()->validate([
             'name' => 'required',
-            'dao' => 'required'
+            'dob' => 'required'
         ]);
     }
 }
